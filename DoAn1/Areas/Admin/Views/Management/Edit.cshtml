@@ -1,0 +1,128 @@
+﻿@model DoAn1.Data.Models.Product
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+<style>
+    img {
+        width: 30%;
+    }
+</style>
+
+<h1>Edit Product</h1>
+<form asp-area="Admin" asp-controller="Management" asp-action="Edit" method="post" enctype="multipart/form-data" class="form-horizontal" id="productForm">
+    <div class="form-group">
+        <label asp-for="ProductName" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input asp-for="ProductName" class="form-control" />
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortDescription" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <textarea asp-for="ShortDescription" rows="10" class="form-control"></textarea>
+            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="LongDescription" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input asp-for="LongDescription" class="form-control" />
+        </div>
+    </div>
+    @*<div class="form-group">
+        <label asp-for="Photo" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input class="form-control" type="file" name="photo" id="fileUpload" />
+            <span asp-validation-for="Photo"></span>
+        </div>
+    </div>*@
+    @*<div class="form-group">
+        <label class="col-md-2 control-label">Preview</label>
+        <div class="col-md-6">
+            <img id="image_upload_preview" src="~/images/upload/@Model.Photo" alt="your image" />
+        </div>
+    </div>*@
+    <div class="form-group">
+        <label asp-for="Photo" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input asp-for="Photo" class="form-control" readonly="readonly" />
+            <span asp-validation-for="Photo"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Photo</label>
+        <div class="col-md-6">
+            <img src="~/images/Products/@Model.Photo" alt="your image" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Loại sản phẩm</label>
+        <div class="col-md-6">
+            <select asp-for="ProductTypeID" asp-items="ViewBag.productTypes" class="form-control"></select>
+            <span asp-validation-for="ProductTypeID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </div>
+    @*<div class="form-group">
+        <label asp-for="Price" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </div>*@
+    <div class="form-group">
+        <div class="btn-group col-md-offset-2 col-md-6">
+            <input class="btn btn-default" type="submit" value="Return" asp-area="Admin" asp-controller="Management" asp-action="Index" />
+            <input class="btn btn-success" type="submit" value="Update" />
+        </div>
+    </div>
+    @if (ViewBag.status == 1)
+    {
+    <p class="text-warning">Record saved</p>
+    }
+</form>
+
+<script>
+    $("#fileUpload").on('change', function () {
+        if (typeof (FileReader) != "undefined") {
+            var image_holder = $("#image-holder");
+            image_holder.empty();
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image",
+                    "width": "80%"
+                }).appendTo(image_holder);
+            }
+            image_holder.show();
+            reader.readAsDataURL($(this)[0].files[0]);
+        }
+        else {
+            alert("This browser does not support FileReader.");
+        }
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#image_upload_preview').attr({ 'src': e.target.result, 'width': '200px' });
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#fileUpload").change(function () {
+        readURL(this);
+    });
+</script>

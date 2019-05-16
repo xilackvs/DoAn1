@@ -1,0 +1,42 @@
+﻿@model DoAn1.Data.Models.Product
+
+<style>
+    img {
+        width: 15%;
+    }
+</style>
+
+<h1>@ViewBag.title</h1>
+<h2>Product Details</h2>
+<p><a class="btn btn-primary" asp-area="Admin" asp-controller="Management" asp-action="Index">Return</a></p>
+<table class="table">
+    <tr>
+        <th>Product Name</th>
+        <td>@Model.ProductName</td>
+    </tr>
+    <tr>
+        <th>Product Type</th>
+        <td>@Model.ProductType.Name</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>$@Model.Price</td>
+    </tr>
+    <tr>
+        <th>Photo</th>
+        <td>
+            <img src="~/images/Products/@Model.Photo" alt="your image" />
+        </td>
+
+    </tr>
+    <tr>
+        <th>Short Description</th>
+        <td>@Model.ShortDescription</td>
+    </tr>
+    <tr>
+        <th>Long Description</th>
+        <td>@Model.LongDescription</td>
+    </tr>
+
+    <tr></tr>
+</table>

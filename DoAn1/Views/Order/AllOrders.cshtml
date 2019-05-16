@@ -1,0 +1,15 @@
+﻿@{
+    if (User.IsInRole("Admin") == true)
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+    if (User.IsInRole("Seller") == true)
+    {
+        Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+    }
+}
+
+@model DoAn1.ViewModels.ListOrdersWithId
+<h2>All Orders</h2>
+
+@await Html.PartialAsync("OrderList", Model)

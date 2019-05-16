@@ -1,0 +1,5 @@
+﻿<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, @(User.Identity.Name ?? "User")!</a>
+<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><a asp-area="Admin" asp-controller="Management" asp-action="Index">Dashboard</a></li>
+    <li><a asp-area="Admin" asp-controller="Home" asp-action="Logout">Logout</a></li>
+</ul>

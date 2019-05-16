@@ -1,0 +1,79 @@
+﻿@model DoAn1.Data.Dto.OrderDto
+@{
+    ViewData["Title"] = "Checkout";
+}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2 class="p-b-20 text-center">Checkout</h2>
+        @*<div>
+            <div asp-validation-summary="All"></div>
+        </div>*@
+        <form asp-controller="order" asp-action="checkout" method="post">
+            <label class="control-label" asp-for="FirstName"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="FirstName" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <label class="control-label" asp-for="LastName"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="LastName" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <label class="control-label" asp-for="PhoneNumber"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="PhoneNumber" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <label class="control-label" asp-for="Email"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                @if (User.IsInRole("User") == true || User.IsInRole("Seller") == true || User.IsInRole("Admin") == true)
+                {
+                    <input asp-for="Email" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" value="@User.Identity.Name.ToString()" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                }
+                else
+                {
+                    <input asp-for="Email" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                }
+            </div>       
+            <label class="control-label" asp-for="AddressLine"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="AddressLine" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                <span asp-validation-for="AddressLine" class="text-danger"></span>
+            </div>
+            <label class="control-label" asp-for="City"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="City" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <label class="control-label" asp-for="State"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="State" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <label class="control-label" asp-for="Country"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="Country" class="sizefull s-text7 p-l-15 p-r-15 form-control" placeholder="Type Here" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <label class="control-label" asp-for="ZipCode"></label>
+            <div class="form-group bo4 size15 m-b-20 border">
+                <input asp-for="ZipCode" class="sizefull s-text7 p-l-15 p-r-15 form-control" type="text" placeholder="Type Here" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <button type="submit" class="form-submit flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" style="width: 180px;">Place Order</button>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+<br /><br />
+
+<style>
+    span {
+        font-size: 12px;
+    }
+</style>

@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "CheckoutComplete";
+}
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <h2>Order Accepted</h2>
+
+    <p>Thanks for your order. We'll contact with you within 1-2 working days.</p>
+
+    <br />
+    <p>
+        Would you like to order more?
+        <a href="/">Click Here</a>
+    </p>
+    @if (User.IsInRole("User") == true || User.IsInRole("Seller") == true || User.IsInRole("Admin") == true)
+    {
+        <p>Or,</p>
+        <p class="p-b-50">
+            Checkout your order details!
+            <a href="/order/myOrder">Click Here</a>
+        </p>
+    }
+</div>
+<div class="col-md-3"></div>

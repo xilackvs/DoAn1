@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "unpkg",
+      "library": "bootstrap@4.0.0",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "font-awesome@5.8.1",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@aspnet/signalr@1.1.4",
+      "destination": "wwwroot/lib/@aspnet/signalr/",
+      "files": [
+        "dist/browser/signalr.js",
+        "dist/browser/signalr.min.js"
+      ]
+    }
+  ]
+}
